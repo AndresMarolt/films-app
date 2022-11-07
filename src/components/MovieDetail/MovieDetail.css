@@ -1,19 +1,20 @@
 .movie {
     width: 100%;
     position: relative;
-    display: flex;
-    flex-direction:column;
-    align-items: center;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .movie__intro {
-    width: 80%;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .movie__backdrop {
-    width: 100%;
-    height: 500px;
-    object-fit:cover;
+    width: 80%;
+    margin: 0 auto;
+    height: 600px;
+    object-fit:contain;
     object-position: 0 35%;
 }
 
@@ -21,8 +22,11 @@
     align-items: center;
     width: 75%;
     display: flex;
+    justify-content: space-between;
     position: relative;
-    bottom: 225px;
+    bottom: 245px;
+    right: 0%;
+    margin: 0 auto;
 }
 
 .movie__detailLeft {
@@ -30,17 +34,17 @@
 }
 
 .movie__poster {
-    width:300px;
+    width:75%;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.86) 0px 22px 40px 6px;
 }
 
 .movie__detailRight {
+    width: 1000px;
     color: white;
     display: flex;
     flex-direction: column;
     height: 450px;
-    justify-content:space-between ;
 }
 
 .movie__detailRightTop > div{
@@ -70,6 +74,8 @@
 
 
 .movie__detailRightBottom {
+    text-align: left;
+    width: 600px;
     margin: 2rem 0;
     flex: 0.8;
 }
@@ -86,17 +92,24 @@
     margin-left: auto;
 }
 
+.movie__data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    bottom: 80px;
+    gap: 30px;
+}
+
 .movie__links {
     position: relative;
-    bottom: 120px;
     display: flex;
     justify-content: space-between;
     width: 75%;
 }
 
-.movie__heading {
-    font-size: 2.2rem;
-}
+
 
 .movie__Button {
     display: flex;
@@ -133,7 +146,6 @@
 
 
 .movie__productionComapany {
-    width: 200px;
     margin: 2rem;
     background-color: white;
     padding: 5px;
@@ -146,4 +158,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.detail_heading {
+    font-size: 2.2rem;
+}
+
+.credits {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
 }

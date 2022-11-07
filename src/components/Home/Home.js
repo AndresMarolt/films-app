@@ -35,7 +35,7 @@ const Home = () => {
                 >
                     {
                         popularMovies.map(movie => (
-                            <Link style={{textDecoration: 'none', color: 'white'}} to={`/movie/${movie.id}`}>
+                            <Link style={{textDecoration: 'none', color: 'white'}} to={`/movie/${movie.id}`} key={movie.id}>
                                     <div className="posterImage">
                                         <img src={` https://image.tmdb.org/t/p/original/${movie && movie.backdrop_path}`}  />
                                     </div>
@@ -64,7 +64,7 @@ const Home = () => {
                 <div className="list__cards">
                     {
                         popularMovies?.map(movie => (
-                            <Cards movie={movie} isLoading={isLoading} key={movie.id} />
+                            <Cards movie={movie} isLoading={isLoading} key={movie.id}/>
                         ))
                     }
                 </div>

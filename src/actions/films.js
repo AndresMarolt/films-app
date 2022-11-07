@@ -16,3 +16,10 @@ export const getDetail = async (id) => {
     console.log(data);
     return data;
 }
+
+export const getCredits = async (id) => {
+    const { data } = await api.getCredits(id);
+    console.log(data);
+    return data;
+
+}
