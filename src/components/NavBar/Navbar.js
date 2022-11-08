@@ -2,6 +2,8 @@ import React from "react";
 import './NavBar.css'
 import { Link } from "react-router-dom";
 
+import SearchBar from "../SearchBar/SearchBar";
+
 const NavBar = () => {
     return (
         <div className="header">
@@ -11,6 +13,8 @@ const NavBar = () => {
                 <Link to="/movies/top_rated" style={{textDecoration: 'none'}}><span>Top Rated</span></Link>
                 <Link to="/movies/upcoming" style={{textDecoration: 'none'}}><span>Upcoming</span></Link>
             </div>
+
+            <SearchBar />
         </div>
     )
 }

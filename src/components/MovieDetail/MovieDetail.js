@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Carousel } from "react-responsive-carousel";
 
 import './MovieDetail.css'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getDetail, getCredits } from '../../actions/films'
 
 
@@ -22,8 +22,6 @@ const MovieDetail = () => {
         
         fetchDetail();
     }, [])
-    
-    console.log(credits);
 
     return (
         <div className="movie">

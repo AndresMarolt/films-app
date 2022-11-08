@@ -1,0 +1,47 @@
+.search {
+  width: 20%;
+}
+
+.search__bar {
+  padding: 5px 3px;
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.search__bar input {
+  border: none;
+}
+
+.search__bar input:focus {
+  outline: none;
+}
+
+.search__bar i {
+  color: gray;
+  margin-right: 5px;
+}
+
+.search__results {
+  width: 20%;
+  background-color: white;
+  color: black;
+  position: absolute;
+  padding: 5px 3px;
+  top: 56px;
+  right: 2%;
+  z-index: 1000;
+}
+
+.search__results a {
+  width: 100%;
+  color: black;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.search__results a:hover {
+  background-color: #bdbdbd;
+}
+/*# sourceMappingURL=SearchBar.css.map */

@@ -1,0 +1,50 @@
+
+.search {
+    width: 20%;
+
+}
+
+.search__bar {
+
+    padding: 5px 3px;
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    input {
+
+        border: none;
+        
+        &:focus {
+            outline: none;
+        }
+    }
+    
+    i {
+        color: gray;
+        margin-right: 5px;
+    }
+}
+
+.search__results {
+    width: 20%;
+    background-color: white;
+    color: black;
+    position: absolute;
+    padding: 5px 3px;
+
+    top: 56px;
+    right: 2%;
+    z-index: 1000;
+
+    a {
+        width: 100%;
+        color: black;
+        text-decoration: none;
+        display: block;
+        border-bottom: 1px solid rgb(208, 208, 208);
+
+        &:hover {
+            background-color: rgb(189, 189, 189);
+        }
+    }
+}

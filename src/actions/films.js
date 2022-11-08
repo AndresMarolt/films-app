@@ -2,7 +2,6 @@ import * as api from '../api'
 
 export const getPopular = async () => {
     const { data } = await api.getPopular();
-    console.log(data);
     return data.results;
 }
 
@@ -13,13 +12,15 @@ export const getByType = async (type) => {
 
 export const getDetail = async (id) => {
     const { data } = await api.getDetail(id);
-    console.log(data);
     return data;
 }
 
 export const getCredits = async (id) => {
     const { data } = await api.getCredits(id);
-    console.log(data);
     return data;
+}
 
+export const searchMovie = async (title) => {
+    const { data } = await api.searchMovie(title);
+    return data.results;
 }
