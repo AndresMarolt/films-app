@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { Carousel } from "react-responsive-carousel";
+
 import './MovieDetail.css'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { getDetail, getCredits } from '../../actions/films'
+
 
 const MovieDetail = () => {
 
@@ -55,8 +58,17 @@ const MovieDetail = () => {
                         </div>
                     </div>
                     <div className="movie__detailRightBottom">
-                        <div className="synopsisText">Synopsis</div>
+                        <h2 className="synopsisText">Synopsis</h2>
                         <div>{currentMovie?.overview || ""}</div>
+
+                        <div className="movie__links">
+                        {
+                            currentMovie?.homepage && <a href={currentMovie.homepage} target="_blank" style={{textDecoration: "none"}}><p><span className="movie__homeButton movie__Button">Homepage <i className="newTab fas fa-external-link-alt"></i></span></p></a>
+                        }
+                        {
+                            currentMovie?.imdb_id && <a href={"https://www.imdb.com/title/" + currentMovie.imdb_id} target="_blank" style={{textDecoration: "none"}}><p><span className="movie__imdbButton movie__Button">IMDb<i className="newTab fas fa-external-link-alt"></i></span></p></a>
+                        }
+                    </div>
                     </div>
                     
                 </div>
@@ -67,33 +79,53 @@ const MovieDetail = () => {
                     <h2 className='detail_heading' style={{marginBottom: '15px'}}>Cast</h2>
 
                     <div className='credits'>
-                        {
-                            credits?.cast?.slice(0, 12).map(actor => (
-                                <div className='credit' key={actor.id} href="">
-                                    <img src={actor.profile_path ? `https://image.tmdb.org/t/p/original/${actor.profile_path}` : "https://d1bvpoagx8hqbg.cloudfront.net/259/0f326ce8a41915e8b1d21ffaee087fae.jpg"} style={{width: '60%', height: '60%', borderRadius: '100px'}}/>
-                                    <h4>{actor.name}</h4>
-                                    <h4 style={{fontWeight: 100 }}>{actor.character}</h4>
-                                </div>
-                            ))
-                        }
+                        <Carousel
+                            showThumbs={false}
+                            autoPlay={false}
+                            centerMode
+                            transitionTime={200}
+                            showArrows={true}
+                            centerSlidePercentage={17}
+                        >
+                            {
+                                credits?.cast?.slice(0, 12).map(actor => (
+                                    <div className='credit' key={actor.id}>
+                                        <img src={actor.profile_path ? `https://image.tmdb.org/t/p/original/${actor.profile_path}` : "https://d1bvpoagx8hqbg.cloudfront.net/259/0f326ce8a41915e8b1d21ffaee087fae.jpg"} style={{width: '30%', height: '80px', borderRadius: '1000000px'}}/>
+                                        <h4>{actor.name}</h4>
+                                        <h4 style={{fontWeight: '100', marginBottom: '60px' }}>{actor.character}</h4>
+                                    </div>
+                                ))
+                            }
+                        </Carousel>
                     </div>
                 </div>
 
                 <div className="movie__crew">
-                    <h2 className='detail_heading'>Crew</h2>
+                    <h2 className='detail_heading' style={{margin: '15px 0'}}>Crew</h2>
+
+                    <div className='credits'>
+                        <Carousel
+                                showThumbs={false}
+                                autoPlay={false}
+                                centerMode
+                                transitionTime={200}
+                                showArrows={true}
+                                centerSlidePercentage={17}
+                        >
+                            {
+                                credits?.crew?.slice(0, 12).map(crewMember => (
+                                    <div className='credit' key={crewMember.id} href="">
+                                        <img src={crewMember.profile_path ? `https://image.tmdb.org/t/p/original/${crewMember.profile_path}` : "https://d1bvpoagx8hqbg.cloudfront.net/259/0f326ce8a41915e8b1d21ffaee087fae.jpg"} style={{width: '20%', height: '50%', borderRadius: '100px'}}/>
+                                        <h4>{crewMember.name}</h4>
+                                        <h4 style={{fontWeight: '100', marginBottom: '60px' }}>{crewMember.job}</h4>
+                                    </div>
+                                ))
+                            }
+                        </Carousel>
+                    </div>
                 </div>
 
-                <div className="movie__links">
-                    <h2 className="movie__heading detail_heading">Useful Links</h2>
-                    {
-                        currentMovie?.homepage && <a href={currentMovie.homepage} target="_blank" style={{textDecoration: "none"}}><p><span className="movie__homeButton movie__Button">Homepage <i className="newTab fas fa-external-link-alt"></i></span></p></a>
-                    }
-                    {
-                        currentMovie?.imdb_id && <a href={"https://www.imdb.com/title/" + currentMovie.imdb_id} target="_blank" style={{textDecoration: "none"}}><p><span className="movie__imdbButton movie__Button">IMDb<i className="newTab fas fa-external-link-alt"></i></span></p></a>
-                    }
-                </div>
-
-                <h2 className="movie__heading detail_heading">Production companies</h2>
+                <h2 className="movie__heading detail_heading">{currentMovie?.production_companies ? "Production companies" : ""}</h2>
                 <div className="movie__production">
                     {
                         currentMovie?.production_companies?.map(company => (
@@ -101,10 +133,10 @@ const MovieDetail = () => {
                                 {
                                     company.logo_path 
                                     && 
-                                    <span className="productionCompanyImage">
+                                    <div className="productionCompanyImage">
                                         <img className="movie__productionComapany" src={"https://image.tmdb.org/t/p/original" + company.logo_path} />
-                                        <span>{company.name}</span>
-                                    </span>
+                                        <h5 className="">{company.name}</h5>
+                                    </div>
                                 }
                             </div>
                         ))

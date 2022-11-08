@@ -5,6 +5,7 @@ import NavBar from './components/NavBar/Navbar';
 import Home from './components/Home/Home';
 import MovieList from './components/MovieList/MovieList';
 import MovieDetail from './components/MovieDetail/MovieDetail';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
               <Route path="movies/:type" element={<MovieList />} />
               <Route path="/*" element={<h1>Error Page  </h1>} />
             </Routes>
+
+            <Footer />
         </div>
       </BrowserRouter>  
   );
