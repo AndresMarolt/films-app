@@ -1,12 +1,24 @@
-.header {
-    margin: 0 2.5rem;
-    padding: 1rem 0;
-    align-items: center;
-    display: flex;
-    justify-content:space-between;
+.navbar {
+    padding: 1rem 0rem;
+    z-index: 1000000;
+    position: fixed;
+    background-color: black;
+    width: 100%;
+    -webkit-box-shadow: 0 10px 5px #000000;
+    -moz-box-shadow: 0 10px 5px #000000;
+    box-shadow: 0 10px 5px #000000;
 }
 
-.headerLeft, .headerRight {
+.navbar__content {
+    
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.navbarLeft, .navbarRight {
     display: flex;
     align-items: center;
 
@@ -25,7 +37,7 @@ a > span:hover {
     color: #f3ce13;
 }
 
-.header__icon {
+.navbar__icon {
     width: 80px;
     cursor: pointer;
 }

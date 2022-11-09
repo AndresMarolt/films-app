@@ -11,7 +11,7 @@ const MovieDetail = () => {
     const [currentMovie, setCurrentMovie] = useState();
     const [credits, setCredits] = useState();
     const { id } = useParams();
-
+    
     useEffect(() => {
         const fetchDetail = async () => {
             const fetchedDetail = await getDetail(id);
@@ -21,8 +21,8 @@ const MovieDetail = () => {
         }
         
         fetchDetail();
-    }, [])
-
+    }, [id])
+    
     return (
         <div className="movie">
             
@@ -39,7 +39,7 @@ const MovieDetail = () => {
                 </div>
                 <div className="movie__detailRight">
                     <div className="movie__detailRightTop">
-                        <div className="movie__name">{currentMovie?.original_title || ""}</div>
+                        <div className="movie__name">{currentMovie?.title || ""}</div>
                         <div className="movie__tagline">{currentMovie?.tagline || ""}</div>
                         <div className="movie__rating">
                             {currentMovie?.vote_average || ""} <i className="fas fa-star" />
@@ -66,7 +66,7 @@ const MovieDetail = () => {
                         {
                             currentMovie?.imdb_id && <a href={"https://www.imdb.com/title/" + currentMovie.imdb_id} target="_blank" style={{textDecoration: "none"}}><p><span className="movie__imdbButton movie__Button">IMDb<i className="newTab fas fa-external-link-alt"></i></span></p></a>
                         }
-                    </div>
+                        </div>
                     </div>
                     
                 </div>
