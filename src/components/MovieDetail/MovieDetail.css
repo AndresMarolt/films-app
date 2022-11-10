@@ -11,10 +11,9 @@
 }
 
 .movie__backdrop {
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
     height: 600px;
-    object-fit:contain;
 }
 
 .movie__detail {
@@ -179,4 +178,27 @@
 .credits {
     width: 80%;
     margin: 0 auto;
+}
+
+.providers_all {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.providers {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    justify-content: space-between;
+}
+
+.provider    {
+    margin: 20px 0;
+    display: flex;
+    gap: 50px
+}
+
+.provider img {
+    border-radius: 20px;
+    width: 60px;
 }

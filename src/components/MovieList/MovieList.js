@@ -15,6 +15,7 @@ const MovieList = () => {
             const fetchedMovies = await getByType(type);
             setIsLoading(false);
             setMovieList(fetchedMovies);
+            console.log(movieList);
         }
         
         fetchByType();

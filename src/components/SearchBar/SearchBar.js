@@ -12,7 +12,6 @@ const SearchBar = () => {
     const location = useLocation();
 
     useEffect(() => {
-        console.log("ACA");
         const clickOutsideSearchBar = (event) => {
             if(!searchRef.current.contains(event.target)) {
                 setShowResults(false);

@@ -3,23 +3,31 @@ import { Carousel } from "react-responsive-carousel";
 
 import './MovieDetail.css'
 import { useParams } from 'react-router-dom'
-import { getDetail, getCredits } from '../../actions/films'
+import { getDetail, getCredits, getWatchProviders } from '../../actions/films'
 
 
 const MovieDetail = () => {
 
-    const [currentMovie, setCurrentMovie] = useState();
-    const [credits, setCredits] = useState();
+    const [currentMovie, setCurrentMovie] = useState(null);
+    const [credits, setCredits] = useState(null);
+    const [watchProviders, setWatchProviders] = useState(null);
     const { id } = useParams();
     
+    console.log(watchProviders);
     useEffect(() => {
+        
         const fetchDetail = async () => {
             const fetchedDetail = await getDetail(id);
             const fetchedCredits = await getCredits(id);
+            const fetchedWatchProviders = await getWatchProviders(id);
             setCurrentMovie(fetchedDetail);
             setCredits(fetchedCredits);
+
+            const { AR } = await fetchedWatchProviders;
+            setWatchProviders(AR);
+            // fetchedWatchProviders.find()
         }
-        
+
         fetchDetail();
     }, [id])
     
@@ -123,23 +131,62 @@ const MovieDetail = () => {
                     </div>
                 </div>
 
-                <h2 className="movie__heading detail_heading">{currentMovie?.production_companies ? "Production companies" : ""}</h2>
-                <div className="movie__production">
-                    {
-                        currentMovie?.production_companies?.map(company => (
-                            <div key={company.id}>
-                                {
-                                    company.logo_path 
-                                    && 
-                                    <div className="productionCompanyImage">
-                                        <img className="movie__productionComapany" src={"https://image.tmdb.org/t/p/original" + company.logo_path} />
-                                        <h5 className="">{company.name}</h5>
+                {
+                    watchProviders &&
+                        <div className='providers_all'>
+                            <h2>Where to Watch?</h2>
+
+                            <div className='providers'>
+                                {   watchProviders?.flatrate &&
+                                    <div>
+                                        <h2>Stream</h2>
+                                        <div className='provider'>
+                                            {
+                                                watchProviders?.flatrate?.map(provider => (
+                                                    <div className='provider__items'>
+                                                        <img src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`} />
+                                                        <p>{provider.provider_name}</p>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
+                                    </div>
+                                }
+
+                                {   watchProviders?.buy &&
+                                    <div>
+                                        <h2>Buy</h2>
+                                        <div className='provider'>
+                                            {
+                                                watchProviders?.buy?.map(provider => (
+                                                    <div className='provider__items'>
+                                                        <img src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`} />
+                                                        <p>{provider.provider_name}</p>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
+                                    </div>
+                                }
+
+                                {   watchProviders?.rent &&
+                                    <div>
+                                        <h2>Rent</h2>
+                                        <div className='provider'>
+                                            {
+                                                watchProviders?.rent?.map(provider => (
+                                                    <div className='provider__items'>
+                                                        <img src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`} />
+                                                        <p>{provider.provider_name}</p>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
                                     </div>
                                 }
                             </div>
-                        ))
-                    }
-                </div>
+                        </div>
+                }
             </div>
             
         </div>
