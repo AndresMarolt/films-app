@@ -1,0 +1,57 @@
+.notification {
+  position: fixed;
+  top: 100px;
+  right: 0px;
+  padding: 10px;
+  box-shadow: -5px 2px 15px black;
+  -webkit-animation: myfirst 3s infinite;
+  animation: myfirst 3s forwards;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  animation-direction: normal;
+  -webkit-animation-direction: normal;
+}
+.notification_text {
+  color: black;
+  text-shadow: none;
+}
+
+@-webkit-keyframes myfirst {
+  0% {
+    right: -50%;
+  }
+  5% {
+    right: 0%;
+  }
+  85% {
+    right: 0%;
+  }
+  100% {
+    right: -50%;
+  }
+}
+@keyframes myfirst {
+  0% {
+    right: -50%;
+  }
+  5% {
+    right: 0%;
+  }
+  85% {
+    right: 0%;
+  }
+  100% {
+    right: -50%;
+  }
+}
+.green-background {
+  background-color: green;
+}
+
+.red-background {
+  background-color: red;
+}
+
+.gold-background {
+  background-color: #f3ce13;
+}/*# sourceMappingURL=Notification.css.map */

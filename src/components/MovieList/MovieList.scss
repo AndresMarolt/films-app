@@ -1,0 +1,46 @@
+.movie__list {
+    
+    .list__title {
+        font-size: 1.75rem;
+        margin: 40px 0;
+        border-left: 5px solid #f3ce13;
+        padding-left: 10px;
+        text-align: left;
+        text-transform: capitalize;
+    }
+
+    .list__cards {
+        width: 100%;
+        display: grid;
+        gap: 10px;
+        grid-row-end: initial;
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+}
+
+@media(min-width: 768px) {
+    .movie__list {
+        
+        margin: 0 auto;
+        
+        .list__title {
+            margin:  2.5rem 0;
+        }
+        
+        .list__cards {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
+
+@media(min-width: 1024px) {
+    .movie__list {
+        
+        .list__cards {
+            width: 100%;
+            margin: 0 auto;
+            grid-template-columns: repeat(8, 1fr);
+        }
+    }
+}

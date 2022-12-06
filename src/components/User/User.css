@@ -1,0 +1,54 @@
+.profile {
+  margin: 1rem auto;
+}
+.profile .user_data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile .user_data img {
+  width: 50%;
+  margin-bottom: 10px;
+  border-radius: 100px;
+}
+.profile .user_data h2 {
+  align-self: center;
+}
+
+.rated__movie {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.rated__movie-stars {
+  margin-left: 10px;
+}
+.rated__movie-stars i {
+  font-size: 12px;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .profile {
+    margin: 3rem auto;
+  }
+  .profile .user_data {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .profile .user_data img {
+    width: 10%;
+  }
+}
+@media (min-width: 1024px) {
+  #movie__list-user {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  #movie__list-user .card {
+    height: 120px;
+  }
+  #movie__list-user .card__overlay {
+    display: none;
+  }
+}/*# sourceMappingURL=User.css.map */

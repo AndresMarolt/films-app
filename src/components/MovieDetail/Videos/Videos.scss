@@ -1,0 +1,53 @@
+.movie__videos {
+
+    .videos {
+        width: 100%;
+        
+        .video__container {
+            width: 100%;
+        }
+        
+        .video {  
+            border: none;
+            width: 100%;
+            margin-bottom: 10px;
+            height: 200px;
+        }
+
+        .videoCarousel {
+            margin: 0 auto;
+            width: 95%;
+            height: 200px;
+        }
+    }
+}
+
+
+
+@media(min-width: 768px) {
+    .movie__videos .videos {
+        display: flex;
+        gap: 50px;
+                    
+        .video {
+            height: 400px;
+        }
+
+        .videoCarousel {
+            height: 300px;
+        }
+    }
+}
+
+@media(min-width: 1024px) {
+    .movie__videos .videos {
+                    
+        .video {
+            height: 400px;
+        }
+
+        .videoCarousel {
+            height: 300px;
+        }
+    }   
+}

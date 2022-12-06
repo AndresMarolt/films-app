@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-
 import { getByType } from "../../actions/films";
-import Cards from "../Cards/Cards";
+import Card from '../Card/Card'
 import './MovieList.css'
-
 
 const MovieList = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +13,6 @@ const MovieList = () => {
             const fetchedMovies = await getByType(type);
             setIsLoading(false);
             setMovieList(fetchedMovies);
-            console.log(movieList);
         }
         
         fetchByType();
@@ -27,7 +24,7 @@ const MovieList = () => {
             <div className="list__cards">
                 {
                     movieList.map(movie => (
-                        <Cards movie={movie} isLoading={isLoading} key={movie.id} />
+                        <Card movie={movie} isLoading={isLoading} key={movie.id} showName={"showName"} />
                     ))
                 }
             </div>

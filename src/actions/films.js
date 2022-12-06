@@ -30,7 +30,12 @@ export const getWatchProviders = async (id) => {
     return data.results;
 }
 
-// export const getCountry = async () => {
-//     const data = await api.getCountry();
-//     console.log(data);
-// }
+export const getVideos = async (id) => {
+    const {data} = await api.getVideos(id);
+    return data.results;
+}
+
+export const getReviews = async (id) => {
+    const {data} = await api.getReviews(id);
+    return data.results;
+}

@@ -1,0 +1,86 @@
+.session_all {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+.session_all .section_title {
+  margin-bottom: 30px;
+}
+.session_all .section_title img {
+  width: 150px;
+}
+.session_all form {
+  border: 1px solid #f3ce13;
+  border-radius: 10px;
+  padding: 30px 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.session_all form div {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  width: 100%;
+  justify-content: center;
+}
+.session_all form div label {
+  width: 30%;
+  text-align: right;
+}
+.session_all form div input {
+  color: white;
+  width: 30%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #f3ce13;
+  caret-color: white;
+}
+.session_all form div input:focus {
+  outline: none;
+}
+.session_all form button {
+  padding: 8px;
+  background-color: transparent;
+  border: 2px solid #f3ce13;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30px;
+  font-size: 1.2rem;
+}
+
+.toggle-auth {
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+.toggle-auth span {
+  color: lightblue;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .session_all form {
+    width: 75%;
+    padding: 30px 0;
+  }
+  .session_all .section_title img {
+    width: 180px;
+  }
+}
+@media (min-width: 1024px) {
+  .session_all form {
+    width: 60%;
+    padding: 60px 0;
+  }
+  .session_all .section_title img {
+    width: 180px;
+  }
+}/*# sourceMappingURL=Session.css.map */

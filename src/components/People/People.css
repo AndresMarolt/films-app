@@ -1,0 +1,87 @@
+.personDetail {
+  margin-top: 20px;
+}
+.personDetail .person .person-top .person__picture {
+  width: 60%;
+  margin: 0 auto;
+}
+.personDetail .person .person-top .person__picture img {
+  height: 300px;
+  width: 100%;
+}
+.personDetail .person .person-top .person__info h2, .personDetail .person .person-top .person__info p, .personDetail .person .person-top .person__info a {
+  margin: 5px 0;
+  color: white;
+}
+.personDetail .person .person-top .person__info .name {
+  color: white;
+}
+.personDetail .person .person-top .person__info .website a {
+  text-decoration: none;
+  color: rgb(180, 180, 255);
+}
+.personDetail .person .person-top .person__info span {
+  font-weight: lighter;
+}
+.personDetail .person .bio {
+  font-weight: lighter;
+  text-align: justify;
+}
+.personDetail .works {
+  margin-top: 30px;
+}
+.personDetail .works .options {
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.personDetail .works .options button {
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: unset;
+  color: white;
+  border: 2px solid #f3ce13;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.personDetail .works .options .selected {
+  color: black;
+  background-color: #f3ce13;
+}
+
+@media (min-width: 768px) {
+  .personDetail .person .person-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .personDetail .person .person-top .person__picture {
+    text-align: center;
+    width: 22%;
+    margin: 0;
+  }
+  .personDetail .person .person-top .person__picture img {
+    height: 280px;
+    width: 100%;
+  }
+  .personDetail .person .person-top .person__info {
+    text-align: justify;
+    width: 100%;
+  }
+  .personDetail .works {
+    margin-top: 0;
+  }
+}
+@media (min-width: 1024px) {
+  .personDetail .person__picture {
+    width: 20%;
+  }
+  .personDetail .person__picture img {
+    height: 300px;
+  }
+}/*# sourceMappingURL=People.css.map */
