@@ -26,11 +26,11 @@ const NavBar = () => {
     console.log(showUserMenu);
 
     const closeDropdown = (event) => {
-        if( !accountRef.current.parentNode.contains(event.target) && !accountRefDesk.current.parentNode.contains(event.target) ) {
+        if( !accountRef.current?.parentNode.contains(event.target) && !accountRefDesk.current?.parentNode.contains(event.target) ) {
             setShowUserMenu(false);
         }
 
-        if( !menuRef.current.parentNode.contains(event.target)) {
+        if( !menuRef.current?.parentNode.contains(event.target)) {
             setShowMenu(false);
         }
     }
