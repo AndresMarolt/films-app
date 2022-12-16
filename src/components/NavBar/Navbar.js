@@ -3,15 +3,16 @@ import './NavBar.css'
 import { Link, useLocation } from "react-router-dom";
 import { deleteSession } from "../../actions/user";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faT, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import SearchBar from "./SearchBar/SearchBar";
 
 const NavBar = () => {
 
     const location = useLocation();
+    const menuRef = useRef(null);
     const accountRef = useRef(null);
-    const accountRefMob = useRef(null);
+    const accountRefDesk = useRef(null);
     const [showUserMenu, setShowUserMenu] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [searching, setSearching] = useState(false);
@@ -19,8 +20,22 @@ const NavBar = () => {
     
     const logout = async () => {
         const aux = await deleteSession(JSON.parse(localStorage.getItem('user')).sessionId);
-        window.location.reload(false)
+        window.location = '/'
     }
+
+    console.log(showUserMenu);
+
+    const closeDropdown = (event) => {
+        if( !accountRef.current.parentNode.contains(event.target) && !accountRefDesk.current.parentNode.contains(event.target) ) {
+            setShowUserMenu(false);
+        }
+
+        if( !menuRef.current.parentNode.contains(event.target)) {
+            setShowMenu(false);
+        }
+    }
+
+    document.addEventListener("mousedown", (e) => closeDropdown(e));
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -28,23 +43,12 @@ const NavBar = () => {
             userData && setUser(userData.accountDetails);
         }
         fetchUserData();
-
-        
-        const closeDropdown = (event) => {
-            // console.log(event.target.classList.contains('mobile_userIcon'));
-            if(!accountRef.current.contains(event.target) && !event.target.classList.contains('mobile_userIcon') && !event.target.classList.contains('profile-mob') && !event.target.classList.contains('logout-mob') ) {
-                setShowUserMenu(false);
-            }
-        }
-        document.addEventListener("mousedown", (e) => closeDropdown(e));
-        
-        return () => {
-            document.removeEventListener("mousedown", closeDropdown);
-        }
+           
     }, [])
 
     useEffect(() => {
         setShowUserMenu(false);
+        setShowMenu(false);
     }, [location])
 
     return (
@@ -62,18 +66,20 @@ const NavBar = () => {
 
                     {
                         user ? (
-                            <div className="user" ref={accountRef}>
-                                <div className="userLink" onClick={() => setShowUserMenu(!showUserMenu)}>
-                                    <img 
-                                        src={
-                                            user?.avatar.tmdb.avatar_path ? `https://image.tmdb.org/t/p/original/${user?.avatar.tmdb.avatar_path}` : `https://secure.gravatar.com/avatar/${user?.avatar.gravatar.hash}?s=150` 
-                                        } 
-                                    />
-                                </div>
+                            <div>
+                                <div className="user" >
+                                    <div ref={accountRefDesk}  className="userLink" onClick={() => setShowUserMenu(!showUserMenu)}>
+                                        <img 
+                                            src={
+                                                user?.avatar.tmdb.avatar_path ? `https://image.tmdb.org/t/p/original/${user?.avatar.tmdb.avatar_path}` : `https://secure.gravatar.com/avatar/${user?.avatar.gravatar.hash}?s=150` 
+                                            } 
+                                        />
+                                    </div>
 
-                                <div className={`${showUserMenu ? 'user-menu' : 'hidden'} `}>
-                                    <Link to={`/user/${user?.id}`}>Profile</Link>
-                                    <button id="logout" onClick={() => logout()}>Log Out</button>
+                                    <div className={`${showUserMenu ? 'user-menu' : 'hidden'} `}>
+                                        <Link to={`/user/${user?.id}`} >Profile</Link>
+                                        <button id="logout" onClick={() => logout()}>Log Out</button>
+                                    </div>
                                 </div>
                             </div>
                         )
@@ -94,14 +100,13 @@ const NavBar = () => {
 
             </div>
 
-
             {/* MOBILE */}
             <div className="navbar__mobile__content">
                 {
                     !searching ? (
                         <>
                             <div className="navbar__mobile-left">
-                                <div className={`bars ${showMenu ? 'bars-opened' : 'bars-closed'}`} id="bars" onClick={() => setShowMenu(!showMenu)}>
+                                <div ref={menuRef} className={`bars ${showMenu ? 'bars-opened' : 'bars-closed'}`} id="bars" onClick={() => setShowMenu(!showMenu)}>
                                     <span></span>
                                     <span></span>
                                     <span></span>
@@ -121,14 +126,21 @@ const NavBar = () => {
 
                                 {
                                     user ? (
-                                        <div >
-                                            <img 
-                                                onClick={() => setShowUserMenu(!showUserMenu)}
-                                                className="mobile_userIcon"
-                                                src={
-                                                    user?.avatar.tmdb.avatar_path ? `https://image.tmdb.org/t/p/original/${user?.avatar.tmdb.avatar_path}` : `https://secure.gravatar.com/avatar/${user?.avatar.gravatar.hash}?s=150` 
-                                                } 
-                                            />
+                                        <div>
+                                            <div ref={accountRef} style={{width: '80%'}}>
+                                                <img 
+                                                    onClick={() => setShowUserMenu(!showUserMenu)}
+                                                    className="mobile_userIcon"
+                                                    src={
+                                                        user?.avatar.tmdb.avatar_path ? `https://image.tmdb.org/t/p/original/${user?.avatar.tmdb.avatar_path}` : `https://secure.gravatar.com/avatar/${user?.avatar.gravatar.hash}?s=150` 
+                                                    } 
+                                                />
+                                                
+                                                <div className={`${showUserMenu ? 'user-menu' : 'hidden'} usermenu-mob`}>
+                                                    <Link to={`/user/${user?.id}`} className="profile-mob">Profile</Link>
+                                                    <button id="logout" onClick={() => logout()} className="logout-mob">Log Out</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     )
                                     :
@@ -141,10 +153,6 @@ const NavBar = () => {
                                         </div>
                                 }
 
-                                <div className={`${showUserMenu ? 'user-menu' : 'hidden'} usermenu-mob`}>
-                                    <Link to={`/user/${user?.id}`} className="profile-mob">Profile</Link>
-                                    <button id="logout" onClick={() => logout()} className="logout-mob">Log Out</button>
-                                </div>
                                 
                             </div>
                         </>

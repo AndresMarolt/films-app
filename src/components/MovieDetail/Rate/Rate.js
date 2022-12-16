@@ -13,9 +13,9 @@ const Rate = ({id, userData}) => {
     const [hover, setHover] = useState(0);
 
     let initialRating = 0;
-    
-    
+
     useEffect(() => {
+        setRating(0)
         const getRated = async () => {
             const rated = await getRatedMovies(userData.accountDetails.id, userData.sessionId);
             const movie = rated.find(movie => movie.id == id)
@@ -26,13 +26,12 @@ const Rate = ({id, userData}) => {
         }
         
         getRated();
-    }, [])
+    }, [id])
 
     const handleRating = async (index) => {
         setRating(index);        
 
         const aux = await postRating(id, userData.sessionId, index*2);
-        console.log(aux);
     }
 
     return (

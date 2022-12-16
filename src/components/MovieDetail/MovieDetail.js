@@ -14,9 +14,10 @@ const MovieDetail = () => {
 
     const [currentMovie, setCurrentMovie] = useState(null);
     const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('user')));
-
+    document.title = `IMDb Clone | ${currentMovie?.title}`
+    
     const { id } = useParams();
-
+    
     useEffect(() => {    
         const fetchDetail = async () => {
             const fetchedDetail = await getDetail(id);

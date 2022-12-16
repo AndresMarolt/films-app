@@ -6,6 +6,7 @@ import Notification from '../Notification/Notification';
 const Session = () => {
     const [formData, setFormData] = useState(null);
     const [showNotif, setShowNotification] = useState(false);
+    document.title = 'Log In'
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value});
@@ -16,7 +17,6 @@ const Session = () => {
         const aux = await auth(formData);
 
         if(!aux) {
-            console.log("ERROR");
             setShowNotification(true);
             setTimeout(() => {
                 setShowNotification(false)

@@ -57,6 +57,39 @@
     .poster {
 
         .posterImage{
+            height: 400px;
+        }
+        
+        .posterImage__overlay {
+            bottom: 0px;
+            top: unset;
+            right: unset;
+            height: 70%;
+            
+            .posterImage__title {
+                font-size: 4rem;
+            }
+        
+            .posterImage__runtime {
+                font-size: 2rem;
+            }
+            
+            .posterImage__description {
+                font-style: italic;
+                font-size: 1rem;
+                margin-bottom: 0.25rem;
+                display: flex;
+                text-align: left;
+                width: 80%;
+            }
+        }   
+    }
+}
+
+@media(min-width: 1024px) {
+    .poster {
+
+        .posterImage {
             height: 600px;
         }
         
@@ -80,12 +113,8 @@
                 margin-bottom: 0.25rem;
                 display: flex;
                 text-align: left;
-                width: 50%;
+                width: 80%;
             }
         }   
     }
-}
-
-@media(min-width: 1024px) {
-    
 } 

@@ -10,8 +10,8 @@ const People = () => {
     const [isLoading, setIsLoading] = useState(true);
     const {id} = useParams();
 
-    console.log(isLoading);
-    
+    document.title = `IMDb Clone | ${person?.name}`
+
     useEffect(() => {
         const fetchData = async () => {
             const fetchedPerson = await getPersonInfo(id);

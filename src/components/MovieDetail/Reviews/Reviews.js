@@ -16,7 +16,9 @@ const Reviews = ({id}) => {
         fetchData();
     }, [id]);
 
-    if(!reviews) {
+    console.log(reviews);
+
+    if(!reviews?.length) {
         return(
             <>
             </>

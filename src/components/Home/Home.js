@@ -14,6 +14,7 @@ const Home = () => {
 
     const [popularMovies, setPopularMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    document.title = 'IMDb Clone | Home'
 
     useEffect( () => {
         const fetchPopular = async () => {
